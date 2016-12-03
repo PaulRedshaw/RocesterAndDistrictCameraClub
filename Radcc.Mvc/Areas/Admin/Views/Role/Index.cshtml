@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+@{
+    ViewBag.Title = "Add Role";
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>Member Roles</h3>
+
+    </div>
+    <div class="panel-body">
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>@Html.DisplayFor(modelItem => item.Name)</li>
+            }
+        </ul>
+    </div>
+    <div class="panel-footer">
+        @Html.ActionLink("Create New Role", "Create", "Role", new { @class = "btn btn-default bt-sm" })
+
+
+    </div>
+</div>

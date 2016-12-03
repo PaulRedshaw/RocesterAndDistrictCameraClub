@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Rocester and District Camera Club</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/blueberry")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/modernizr")
+
+
+</head>
+<body>
+    <header>
+        <img id="logo" src="~/Images/SiteImages/Logo/RadccLogoBlackShade.svg" alt="Rocester and District Camera Club" title="Rocester and District Camera Club"/>
+         @ViewBag.Title
+        @*<div id="login" class="float-right">
+                @Html.Partial("_LoginPartial")
+            </div>*@
+        <nav>
+       
+            <ul class="">
+                <li>@Html.ActionLink("Homepage", "Index", "Home", new { area = "" }, new { @class = "current" }) </li>
+                @*<li>@Html.ActionLink("About Us", "About", "Home", new { area = "" }, new { @class = "" })</li>
+                <li>@Html.ActionLink("Contact Us", "Contact", "Home", new { area = "" }, new { @class = "" })</li>
+                <li>@Html.ActionLink("Events", "Index", "Programme", new { area = "" }, new { @class = "" })</li>
+                <li>@Html.ActionLink("Rules and Policies", "Index", "Rules", new { area = "" }, new { @class = "" })</li>
+                <li>@Html.ActionLink("Galleries", "Index", "Galleries", new { area = "" }, new { @class = "" })</li>
+                <li>@Html.ActionLink("Admin", "Index", "Home", new { area = "Admin" }, new { @class = "" })</li>
+                <li>@Html.ActionLink("Member", "Index", "Home", new { area = "Member" }, new { @class = "" })</li>*@
+            </ul>
+        </nav>
+
+    </header>
+    <div class="container-fluid">
+
+
+       <div id="body" class="col-md-12">
+
+
+            @RenderBody()
+
+        </div>
+
+    </div>
+    <footer class="second">
+        <section class="">
+            <div class="float-left text-center ">
+                <p>&copy; @DateTime.Now.Year - Rocester and District Camera Club, All Rights Reserved</p>
+            </div>
+        </section>
+    </footer>
+   
+    <script type="text/javascript">
+        $(function () {
+            $('.datepicker').datepicker();
+        });
+    </script>
+</body>
+</html>

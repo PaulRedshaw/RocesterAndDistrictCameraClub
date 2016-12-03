@@ -1,0 +1,33 @@
+﻿@model List<Radcc.Model.UsefulLink>
+@{
+   Layout = null;
+}
+
+<div id="UsefulLinksPanel" class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Useful Links</h4>
+    </div>
+    <div class="">
+        <ul class="nav nav-tabs nav-stacked">
+            @foreach (var link in Model)
+            {
+                <li><a title="@link.Description" href="@link.URL" >@link.Name</a></li>
+            }
+        </ul>
+
+    </div>
+
+    <div class="panel-footer clearfix">
+
+        <div class="pull-right">
+            <a class="" href="https://www.facebook.com/groups/371926679538782/" role="button" value="Facebook link" button-name="Facebook link">
+
+                <img src="~/Images/FB-FindUsonFacebook-online-1024.png" style="width:100px; height:20px;" alt="Facebook logo"/>
+            </a>
+            
+
+        </div>
+
+    </div>
+
+</div>

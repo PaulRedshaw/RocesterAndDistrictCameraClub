@@ -1,0 +1,26 @@
+﻿@model List<Radcc.Model.Programme>
+@{
+ 
+}
+<div class="body-content">
+    <div class="panel panel-default">
+        <div class="panel-heading"><h3>@ViewBag.Title</h3></div>
+        <div class="panel-body">
+
+            @foreach (var item in Model)
+            {
+                <div class="panel panel-default ">
+                    <div class="panel-heading">
+                       <h4>@item.FormattedEventDate  - @Html.DisplayFor(modelItem => item.Title)</h4>
+                    </div>
+                    <div class="panel-body">
+                        <h4>@Html.DisplayFor(modelItem => item.Description)</h4>
+                        <p>@Html.DisplayFor(modelItem => item.Comment)</p>
+                        <p>Doors open @item.ArriveTime for @item.StartTime for start</p>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>

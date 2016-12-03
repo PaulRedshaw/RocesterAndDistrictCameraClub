@@ -1,0 +1,60 @@
+﻿
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Admin";
+}
+
+<div class="container">
+    <div class="col-md-12">
+        <div id="ProgrammeAdmin" class="col-md-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4>Events</h4>
+                </div>
+                <div class="panel-body">
+
+                    @Html.ActionLink("View Events", "Index", "Events")
+                </div>
+            </div>
+        </div>
+
+
+        <div id="MemberAdmin" class="col-md-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading ">
+                    <h4>Members</h4>
+                </div>
+                <div class="panel-body">
+                    @Html.ActionLink("Register New Member", "Register", "Account",new { area ="Admin"}, new { id = "registerLink" })
+                    @Html.ActionLink("Roles", "Index", "Role", new { area = "Admin" }, new { id = "roleLink"})
+                </div>
+            </div>
+        </div>
+        <div id="UsefulLinksAdmin" class="col-md-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading ">
+                    <h4>Useful Links</h4>
+                </div>
+                <div class="panel-body">
+                    @Html.ActionLink("View Useful Links List", "List", "UsefulLinks", routeValues: null, htmlAttributes: new { id = "usefulLinksLink" })
+
+                </div>
+            </div>
+
+        </div>
+        <div id="UsefulLinksAdmin" class="col-md-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading ">
+                    <h4>Homepage Images</h4>
+                </div>
+                <div class="panel-body">
+                    @Html.ActionLink("View Image List", "List", "HomepageImages", routeValues: null, htmlAttributes: new { id = "homepageImagesLink" })
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

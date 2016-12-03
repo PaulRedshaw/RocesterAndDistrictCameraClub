@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>       
+        <title>Rocester and District Camera Club</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="identifier-url" content="http://www.rocesteranddistrictcamera.club" />
+        <meta name="title" content="Rocester and District Camera Club" />
+        <meta name="description" content="The club meets the first  and third Tuesday of every month between August and May inclusive" />
+        <meta name="abstract" content="The club meets the first  and third Tuesday of every month between August and May inclusive" />
+        <meta name="keywords" content="Rocester, Camera, Club, Photography,Uttoxeter, Village, Village Hall, Community Centre, Community, Landscape, Portrait, Nature, Astronomy," />
+        <meta name="author" content="Paul Redshaw" />
+        <meta name="revisit-after" content="7" />
+        <meta name="language" content="EN" />
+        <meta name="copyright" content="© 2016 Rocester and District Camera Club, All Rights Reserved" />
+        <meta name="robots" content="All" />
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/blueberry")
+        @Scripts.Render("~/bundles/bootstrap")        
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr") 
+
+
+  
+
+    </head>
+    <body>
+        <header>
+
+
+
+            <img id="logo" src="~/Images/SiteImages/Logo/RadccLogoBlackShade.svg" alt="Rocester and District Camera Club" title="Rocester and District Camera Club" />
+            @*<div id="login" class="float-right">
+
+            </div>*@
+
+            <nav id="rightnav" role="navigation" aria-label="Primary">
+                <a href="#" id="menu-icon" name="menu icon" role="navigation"></a>
+                <ul class="">
+                    <li>@Html.ActionLink("Homepage", "Index", "Home", new { area = "" }, new { @class = "active" }) </li>
+                    <li>@Html.ActionLink("About Us", "About", "Home", new { area = "" }, new { @class = "" })</li>
+                    <li>@Html.ActionLink("Contact Us", "Contact", "Home", new { area = "" }, new { @class = "" })</li>
+                    <li>@Html.ActionLink("Programme", "CurrentProgramme", "Programmes", new { area = "" }, new { @class = "" })</li>
+                    <li>@Html.ActionLink("Rules and Policies", "Index", "RulesAndPolicies", new { area = "" }, new { @class = "" })</li>
+                    @*
+                    <li>@Html.ActionLink("Gallery", "Index", "Gallerys", new { area = "" }, new { @class = "" })</li>*@
+                    @*
+                    <li>@Html.ActionLink("Admin", "Index", "Home", new { area = "Admin" }, new { @class = "" })</li>
+                    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
+                    @*
+                    <li> @Html.Partial("_LoginPartial")</li>*@
+                </ul>
+            </nav>
+
+        </header>
+        <div class="row">
+            <div class="container">
+                <div class="col-md-12">
+                    @RenderBody()
+                </div>
+
+                <footer id="main-footer" class="second">
+                    <section class="">
+                        <div class="">
+                            <p>&copy; @DateTime.Now.Year - Rocester and District Camera Club, All Rights Reserved</p>
+                        </div>
+                    </section>
+                </footer>
+            </div>
+
+        </div>
+
+    </body>
+</html>

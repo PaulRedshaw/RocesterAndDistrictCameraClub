@@ -1,0 +1,65 @@
+﻿@model Radcc.Model.Programme
+@{
+    Layout = null;
+}
+<div id="NextMeetingPanel" class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Next Meeting - @Html.DisplayFor(model => model.FormattedEventDate)</h4>
+    </div>
+    <div class="container">
+       <h4>@Html.DisplayFor(model => model.Title)</h4>
+
+        <p>@Html.DisplayFor(model => model.Description)</p>
+        <p>@Html.DisplayFor(model => model.Comment)</p>
+       
+
+    </div>
+    <div class="panel-footer">
+        <p>Doors open at @Model.ArriveTime for @Model.StartTime start.</p>
+
+    </div>
+
+    
+
+</div>
+@*<div>
+
+       <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.EventDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EventDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Comment)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Comment)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

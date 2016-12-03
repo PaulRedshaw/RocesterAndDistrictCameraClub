@@ -1,0 +1,60 @@
+﻿@model IList<Radcc.Entities.AlbumMaster>
+@{
+    
+    int i = 0;
+}
+<script type="text/javascript">
+function ValidateForm() {
+var txt1 = document.getElementById('ImageName');
+if (txt1.value == '') {
+alert("Enter Image Name !")
+document.getElementById("ImageName").focus();
+return false;
+}
+var uploadfile = document.getElementById('ImageData');
+
+if (uploadfile.value == '') {
+alert('Please upload the attachment');
+uploadfile.focus();
+return false;
+}
+var fname = uploadfile.value;
+var ext = fname.split(".");
+var x = ext.length;
+var extstr = ext[x - 1].toLowerCase();
+if (extstr == 'jpg' || extstr == 'jpeg' || extstr == 'png' || extstr == 'gif') { }
+else {
+alert("Please upload valid image");
+uploadfile.focus();
+return false;
+}
+}
+</script>
+
+<h2>Manage Albums</h2>
+<div style="width:600px;">
+    @using (Html.BeginForm("Create", "ManageAlbums", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>Create Albums</legend>
+            <table>
+                <tr>
+                    <td>Album Name :</td>
+                    <td>@Html.TextBox("ImageName", "", new { style = "width:200px" })</td>
+                </tr>
+                <tr>
+                    <td>Image : </td>
+                    <td><input type="file" name="ImageData" id="ImageData" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" name="submit" value="Upload" onclick="return ValidateForm()" />
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    }
+</div>
+

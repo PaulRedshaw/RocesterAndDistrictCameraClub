@@ -1,0 +1,36 @@
+﻿@model Radcc.Mvc.ViewModels.HomeViewModel
+    @{
+   
+}
+<aside id="UsefulLinksSection" class="float-right col-md-4">
+
+    @Html.Action("_UsefulLinks", "UsefulLinks")
+
+</aside>
+<div class="col=-md-8">
+ 
+    <section id="NextMeetingSection" class="col-md-8 float-left">
+        @Html.Action("_NextMeeting", "Programmes")
+
+    </section>
+
+
+    
+    
+    @*<section id="MapSection" class="col-md-4">
+        @Html.Partial("_Map")
+    </section>*@
+
+    <section id="slide-container" class="col-md-8">
+        @Html.Partial("_ImageSlider")
+    </section>
+
+   
+   
+</div>
+@*<footer class="div-radius">
+    <section id="try" class="div-radius">
+        </section>
+
+</footer>*@
+  
