@@ -12,6 +12,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Radcc.Mvc.Models;
 using Radcc.Data.Context;
+using Radcc.Model;
 
 namespace Radcc.Mvc
 {

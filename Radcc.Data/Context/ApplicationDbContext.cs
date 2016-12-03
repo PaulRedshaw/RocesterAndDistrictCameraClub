@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Radcc.Model;
-using Radcc.Mvc.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 
@@ -13,6 +12,8 @@ namespace Radcc.Data.Context
         public DbSet<Programme> Programmes { get; set; }
         public DbSet<UsefulLink> UsefulLinks { get; set; }
         public DbSet<NewsArticle> NewsArticles { get; set; }
+
+        public DbSet<Gallery> Gallerys { get; set; }
 
         public virtual void Commit()
         {

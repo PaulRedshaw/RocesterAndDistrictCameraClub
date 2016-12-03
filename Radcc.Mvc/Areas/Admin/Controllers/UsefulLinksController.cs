@@ -1,6 +1,5 @@
-﻿using Radcc.Model;
-using Radcc.Service;
-using Radcc.Service.Interfaces;
+﻿using Radcc.Data.Persistence;
+using Radcc.Model;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -8,17 +7,17 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
 {
     public class UsefulLinksController : Controller
     {
-        private IUsefulLinkService _usefulLinkService;
-        public UsefulLinksController (IUsefulLinkService usefulLinkService)
-	{
-            this._usefulLinkService = usefulLinkService;
-	}
-        
+        private IUnitOfWork _unitOfWork;
+        public UsefulLinksController(IUnitOfWork unitOfWork)
+        {
+            this._unitOfWork = unitOfWork;
+        }
+
         // GET: Admin/UsefulLinks
         public ActionResult UsefulLinkList()
-        {       
-            IEnumerable<UsefulLink> usefulLinks = _usefulLinkService.GetAllLinks();
-          
+        {
+            IEnumerable<UsefulLink> usefulLinks = _unitOfWork.UsefulLinks.GetAllLinks();
+
             return View(usefulLinks);
         }
 
@@ -38,10 +37,11 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(UsefulLink link)
         {
-          
+
             try
             {
-                _usefulLinkService.CreateUsefulLink(link);
+                _unitOfWork.UsefulLinks.Add(link);
+                _unitOfWork.Commit();
 
                 return RedirectToAction("List");
             }
@@ -54,13 +54,13 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         // GET: Admin/UsefulLinks/Edit/5
         public ActionResult Edit(int id)
         {
-          
-            UsefulLink link = _usefulLinkService.GetUsefulLinkById(id);
+
+            UsefulLink link = _unitOfWork.UsefulLinks.GetById(id);
             if (link == null)
             {
                 return HttpNotFound();
             }
-          
+
             return View(link);
         }
 
@@ -70,18 +70,19 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-               _usefulLinkService.UpdateUsefulLink(link);
-              return RedirectToAction("Index");
+                _unitOfWork.UsefulLinks.Update(link);
+                _unitOfWork.Commit();
+                return RedirectToAction("Index");
             }
-           
+
             return View(link);
         }
 
         // GET: Admin/UsefulLinks/Delete/5
         public ActionResult Delete(int id)
         {
-           
-            UsefulLink link = _usefulLinkService.GetUsefulLinkById(id);
+
+            UsefulLink link = _unitOfWork.UsefulLinks.GetById(id);
             if (link == null)
             {
                 return HttpNotFound();
@@ -94,11 +95,12 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            UsefulLink link = _usefulLinkService.GetUsefulLinkById(id);
-            _usefulLinkService.DeleteUsefulLink(link);
+            UsefulLink link = _unitOfWork.UsefulLinks.GetById(id);
+            _unitOfWork.UsefulLinks.Delete(link);
+            _unitOfWork.Commit();
             return RedirectToAction("Index");
         }
 
-        
+
     }
 }

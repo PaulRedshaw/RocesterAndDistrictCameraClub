@@ -1,25 +1,42 @@
-﻿using Radcc.Data.Infrastructure;
-using Radcc.Data.Interfaces;
-using Radcc.Model.Models;
+﻿using Radcc.Data.Context;
+using Radcc.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Radcc.Data
 {
-    public class GalleryRepository : RepositoryBase<Gallery>, IGalleryRepository
+    public class GalleryRepository : IGalleryRepository
     {
-        public GalleryRepository(IDbFactory dbFactory) : base(dbFactory)
+        private ApplicationDbContext _context;
+        public GalleryRepository(ApplicationDbContext context)
         {
+            this._context = context;
+        }
+
+        public void CreateGalleryImage(Gallery galleryImage)
+        {
+            _context.Gallerys.Add(galleryImage);
+
+
+        }
+
+        public void DeleteGalleyImage(Gallery image)
+        {
+            _context.Gallerys.Remove(image);
+
+        }
+
+        public Gallery GetGalleryImageById(int id)
+        {
+            var galleryImage = _context.Gallerys.Find(id);
+            return galleryImage;
         }
 
         public IEnumerable<Gallery> GetHomepageImages()
         {
-            var imageList = this.DbContext.Galleries.ToList();
-            return imageList;
-           
+            var gallerys = _context.Gallerys.ToList();
+            return gallerys;
         }
     }
 }

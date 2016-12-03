@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using Radcc.Mvc.Models;
 using Radcc.Data.Context;
+using Radcc.Model;
 
 namespace Radcc.Mvc
 {

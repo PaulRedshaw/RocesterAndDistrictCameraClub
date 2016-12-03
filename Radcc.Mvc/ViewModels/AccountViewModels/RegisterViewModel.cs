@@ -1,26 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Radcc.Mvc.Areas.Admin.Models
+namespace Radcc.Mvc.ViewModels
 {
     public class RegisterViewModel
     {
-        private string _userName;
-    
+        [Required]
         [Display(Name = "User name")]
-        public string UserName {
-            get
-            {
-                return _userName;
-            }
-            private set
-            {
-                _userName = FirstName + " " + LastName;
-            }
-        }
+        public string UserName { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage =
@@ -46,8 +32,5 @@ namespace Radcc.Mvc.Areas.Admin.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
-
     }
-
-
 }

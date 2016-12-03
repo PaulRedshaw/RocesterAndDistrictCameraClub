@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
-namespace Radcc.Mvc.Areas.Admin.Controllers
+namespace Radcc.Mvc.Admin.Controllers
 {
     public class HomeController : Controller
     {
         // GET: Admin/Admin
         public ActionResult Index()
         {
-             return View();
+            return View();
         }
 
         // GET: Admin/Admin/Details/5

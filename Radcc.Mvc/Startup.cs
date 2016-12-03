@@ -3,7 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using Owin;
 using Radcc.Data.Context;
-using Radcc.Mvc.Models;
+using Radcc.Model;
 
 [assembly: OwinStartupAttribute(typeof(Radcc.Mvc.Startup))]
 namespace Radcc.Mvc

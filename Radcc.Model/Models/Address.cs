@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Radcc.Model.Models
@@ -18,8 +17,8 @@ namespace Radcc.Model.Models
         public string County { get; set; }
 
         public string PostCode { get; set; }
-        
-        ICollection<Telephone> TelephoneNumbers { get; set; }
-       
+
+
+
     }
 }

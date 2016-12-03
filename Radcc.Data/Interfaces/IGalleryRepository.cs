@@ -1,15 +1,13 @@
-﻿using Radcc.Model.Models;
-using System;
+﻿using Radcc.Model;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Radcc.Data.Interfaces
+namespace Radcc.Data
 {
-    public interface IGalleryRepository : IRepository<Gallery>
+    public interface IGalleryRepository
     {
+        void CreateGalleryImage(Gallery galleryImage);
+        void DeleteGalleyImage(Gallery image);
+        Gallery GetGalleryImageById(int id);
         IEnumerable<Gallery> GetHomepageImages();
-
     }
 }

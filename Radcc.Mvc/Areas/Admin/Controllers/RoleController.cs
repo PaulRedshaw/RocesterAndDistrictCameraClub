@@ -1,14 +1,8 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Radcc.Data.Context;
-using Radcc.Mvc.Models;
-using System;
-using System.Collections.Generic;
+﻿using Radcc.Data.Context;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
-namespace Radcc.Mvc.Areas.Admin.Controllers
+namespace Radcc.Mvc.Admin.Controllers
 {
     public class RoleController : Controller
     {

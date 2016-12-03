@@ -2,15 +2,14 @@
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Radcc.Data.Context;
-using Radcc.Mvc.Areas.Admin.Models;
-using Radcc.Mvc.Models;
-using System.Collections.Generic;
+using Radcc.Model;
+using Radcc.Mvc.ViewModels;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Radcc.Mvc.Areas.Admin.Controllers
+namespace Radcc.Mvc.Admin.Controllers
 {
 
     public class AccountController : Controller
@@ -23,7 +22,7 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
             this._context = new ApplicationDbContext();
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -35,9 +34,9 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -53,7 +52,7 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
             }
         }
 
-       
+
         // GET: /Account/VerifyCode
         [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
@@ -66,7 +65,7 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
             return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
-     
+
         // POST: /Account/VerifyCode
         [HttpPost]
         [AllowAnonymous]
@@ -82,7 +81,7 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -98,12 +97,12 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
 
         //
         // GET: /Account/Register
-      
+
         public ActionResult Register()
         {
             var model = new RegisterViewModel();
-           // ViewBag.Name = new SelectList(_context.Roles.ToList(),"Name","Name");
-           
+            // ViewBag.Name = new SelectList(_context.Roles.ToList(),"Name","Name");
+
             return View();
         }
 
@@ -115,18 +114,19 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser {
+                var user = new ApplicationUser
+                {
                     UserName = model.FirstName + " " + model.LastName,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Email = model.Email
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
-      
+
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -134,10 +134,10 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
                     await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
                     //Assign Role to user Here     
                     //await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);   
-                 
+
                     return RedirectToAction("Index", "Home", new { area = "Member" });
                 }
-              
+
                 AddErrors(result);
             }
 

@@ -32,7 +32,7 @@ namespace Radcc.Mvc.Controllers
             return View();
         }
 
-        public ActionResult ContactUs()
+        public ActionResult Contact()
         {
             return View();
         }

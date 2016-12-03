@@ -59,6 +59,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\CustomDateProvider.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\Bio.cs" />
+    <Compile Include="Models\Gallery.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Programme.cs" />
     <Compile Include="Models\NewsArticle.cs" />

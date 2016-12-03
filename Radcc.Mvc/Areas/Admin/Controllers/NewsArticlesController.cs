@@ -1,29 +1,27 @@
-﻿using Radcc.Data.Infrastructure;
+﻿using Radcc.Data.Persistence;
 using Radcc.Model;
-using Radcc.Service;
-using Radcc.Service.Interfaces;
 using System.Web.Mvc;
 
-namespace Radcc.Mvc.Areas.Admin.Controllers
+namespace Radcc.Mvc.Admin.Controllers
 {
     public class NewsArticlesController : Controller
     {
-        private UnitOfWork unitOfWork;
-        public NewsArticlesController(INewsArticleService newsArticleService)
+        private IUnitOfWork _unitOfWork;
+        public NewsArticlesController(IUnitOfWork unitOfWork)
         {
-            this._newsArticleService = newsArticleService;
+            this._unitOfWork = unitOfWork;
         }
 
         // GET: Admin/NewsArticles
         public ActionResult Index()
         {
-            return View(_newsArticleService.GetAllNewsArticles());
+            return View(_unitOfWork.NewsArticles.GetAllNewsArticles());
         }
 
         // GET: Admin/NewsArticles/Details/5
         public ActionResult Details(int id)
         {
-            NewsArticle newsArticle = _newsArticleService.GetNewsArticleById(id);
+            NewsArticle newsArticle = _unitOfWork.NewsArticles.GetNewsArticleById(id);
             if (newsArticle == null)
             {
                 return HttpNotFound();
@@ -47,8 +45,8 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _newsArticleService.CreateNewsArticle(newsArticle);
-           
+                _unitOfWork.NewsArticles.Add(newsArticle);
+                _unitOfWork.Commit();
                 return RedirectToAction("Index");
             }
 
@@ -58,7 +56,7 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         // GET: Admin/NewsArticles/Edit/5
         public ActionResult Edit(int id)
         {
-            NewsArticle newsArticle = _newsArticleService.GetNewsArticleById(id);
+            NewsArticle newsArticle = _unitOfWork.NewsArticles.GetNewsArticleById(id);
             if (newsArticle == null)
             {
                 return HttpNotFound();
@@ -75,8 +73,8 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _newsArticleService.UpdateNewsArticle(newsArticle);
-            
+                _unitOfWork.NewsArticles.Update(newsArticle);
+                _unitOfWork.Commit();
                 return RedirectToAction("Index");
             }
             return View(newsArticle);
@@ -85,8 +83,8 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         // GET: Admin/NewsArticles/Delete/5
         public ActionResult Delete(int id)
         {
-       
-            NewsArticle newsArticle = _newsArticleService.GetNewsArticleById(id);
+
+            NewsArticle newsArticle = _unitOfWork.NewsArticles.GetNewsArticleById(id);
             if (newsArticle == null)
             {
                 return HttpNotFound();
@@ -99,12 +97,13 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            NewsArticle newsArticle = _newsArticleService.GetNewsArticleById(id);
-            _newsArticleService.DeleteNewsArticle(newsArticle);
-         
+            NewsArticle newsArticle = _unitOfWork.NewsArticles.GetNewsArticleById(id);
+            _unitOfWork.NewsArticles.Delete(newsArticle);
+            _unitOfWork.Commit();
+
             return RedirectToAction("Index");
         }
 
-      
+
     }
 }

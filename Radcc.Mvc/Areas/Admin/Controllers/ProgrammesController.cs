@@ -1,31 +1,29 @@
-﻿using Radcc.Model;
-using Radcc.Service;
-using Radcc.Service.Interfaces;
-using System.Collections.Generic;
+﻿using Radcc.Data.Persistence;
+using Radcc.Model;
 using System.Web.Mvc;
 
-namespace Radcc.Mvc.Areas.Admin.Controllers
+namespace Radcc.Mvc.Admin.Controllers
 {
     public class ProgrammesController : Controller
     {
-        
-        private IProgrammeService _programmeService;
-   
-        public ProgrammesController(IProgrammeService programmeService)
+
+        private readonly IUnitOfWork _unitOfWork;
+
+        public ProgrammesController(IUnitOfWork unitOfWork)
         {
-            this._programmeService = programmeService;
+            this._unitOfWork = unitOfWork;
         }
         // GET: Admin/Events
         public ActionResult Index()
         {
-           var events = _programmeService.GetAllProgrammeEvents();
+            var events = _unitOfWork.Programmes.GetAllProgrammeEvents();
             return View(events);
         }
 
         // GET: Admin/Events/Details/5
         public ActionResult Details(int id)
         {
-            Programme meeting = _programmeService.GetProgrammeById(id);
+            Programme meeting = _unitOfWork.Programmes.GetProgrammeById(id);
             return View(meeting);
         }
 
@@ -33,7 +31,7 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         public ActionResult Create()
         {
             var programme = new Programme();
-     
+
             return View(programme);
         }
 
@@ -46,21 +44,22 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _programmeService.AddProgramme(programme);
+                _unitOfWork.Programmes.Add(programme);
+                _unitOfWork.Commit();
                 return RedirectToAction("Index");
             }
 
-            
+
             return View(programme);
         }
 
         // GET: Admin/Events/Edit/5
         public ActionResult Edit(int id)
         {
-        
-            Programme meeting = _programmeService.GetProgrammeById(id);
 
-           return View(meeting);
+            Programme meeting = _unitOfWork.Programmes.GetProgrammeById(id);
+
+            return View(meeting);
         }
 
         // POST: Admin/Events/Edit/5
@@ -72,10 +71,11 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _programmeService.UpdateProgramme(programme);
+                _unitOfWork.Programmes.Update(programme);
+                _unitOfWork.Commit();
                 return RedirectToAction("Index");
             }
-        
+
             return View(programme);
         }
 
@@ -83,7 +83,7 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         public ActionResult Delete(int id)
         {
 
-           var meeting = _programmeService.GetProgrammeById(id);
+            var meeting = _unitOfWork.Programmes.GetProgrammeById(id);
 
             return View(meeting);
         }
@@ -93,11 +93,12 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var meeting = _programmeService.GetProgrammeById(id);
-            _programmeService.DeleteProgramme(meeting);
+            var meeting = _unitOfWork.Programmes.GetProgrammeById(id);
+            _unitOfWork.Programmes.Delete(meeting);
+            _unitOfWork.Commit();
             return RedirectToAction("Index");
         }
 
-       
+
     }
 }

@@ -1,19 +1,17 @@
-﻿using Radcc.Model.Models;
-using Radcc.Service.Interfaces;
-using System;
+﻿using Radcc.Data.Persistence;
+using Radcc.Model;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Radcc.Mvc.Areas.Admin.Controllers
+namespace Radcc.Mvc.Admin.Controllers
 {
     public class SliderController : Controller
     {
-        private readonly IGalleryService _galleryService;
-        public SliderController(IGalleryService galleryService)
+        private readonly IUnitOfWork _unitOfWork;
+        public SliderController(IUnitOfWork unitOfWork)
         {
-            this._galleryService = galleryService;
+            this._unitOfWork = unitOfWork;
 
         }
 
@@ -21,7 +19,7 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         public ActionResult Index()
         {
 
-            return View(this._galleryService.GetHomepageImages());
+            return View(this._unitOfWork.Gallerys.GetHomepageImages());
         }
         public ActionResult AddImage()
         {
@@ -47,8 +45,8 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
                 Gallery gallery = new Gallery { ImagePath = "~/Images/SiteImages/HomepageSlider/" + pic };
 
 
-                _galleryService.CreateGalleryImage(gallery);
-                _galleryService.SaveImage();
+                _unitOfWork.Gallerys.CreateGalleryImage(gallery);
+                _unitOfWork.Commit();
 
             }
             return RedirectToAction("Index");
@@ -59,7 +57,7 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         public ActionResult DeleteImages()
         {
 
-            return View(_galleryService.GetHomepageImages());
+            return View(_unitOfWork.Gallerys.GetHomepageImages());
 
         }
         [HttpPost]
@@ -67,14 +65,14 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         {
             foreach (var id in ImageIds)
             {
-                var image = _galleryService.GetGalleryImageById(id);
+                var image = _unitOfWork.Gallerys.GetGalleryImageById(id);
                 string imgPath = Server.MapPath(image.ImagePath);
-                _galleryService.DeleteGalleyImage(image);
+                _unitOfWork.Gallerys.DeleteGalleyImage(image);
                 if (System.IO.File.Exists(imgPath))
                     System.IO.File.Delete(imgPath);
-             }
-            _galleryService.SaveImage();             
-        
+            }
+            _unitOfWork.Commit();
+
             return RedirectToAction("DeleteGalleryImages");
         }
     }

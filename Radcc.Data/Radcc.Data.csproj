@@ -74,6 +74,8 @@
     <Compile Include="Interfaces\IProgrammeRepository.cs" />
     <Compile Include="Interfaces\IUsefulLinkRepository.cs" />
     <Compile Include="Interfaces\INewsArticleRepository.cs" />
+    <Compile Include="Repositorys\GalleryRepository.cs" />
+    <Compile Include="Interfaces\IGalleryRepository.cs" />
     <Compile Include="Repositorys\ProgrammeRepository.cs" />
     <Compile Include="Repositorys\NewsArticleRepository.cs" />
     <Compile Include="Repositorys\UsefulLinkRepository.cs" />

@@ -12,6 +12,6 @@ namespace Radcc.Model.Models
 
 
         [ForeignKey("Id")]
-        public virtual Member Member { get; set; }
+        public virtual ApplicationUser User { get; set; }
     }
 }
