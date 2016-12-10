@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html>
     <head>       
         <title>Rocester and District Camera Club</title>
         <meta charset="utf-8" />
@@ -34,28 +34,40 @@
 
 
             <img id="logo" src="~/Images/SiteImages/Logo/RadccLogoBlackShade.svg" alt="Rocester and District Camera Club" title="Rocester and District Camera Club" />
-            @*<div id="login" class="float-right">
+            <div id="login" class="float-right">
+                <span class="float-right">
+                    @Html.Partial("_LoginPartial")
+                </span>
 
-            </div>*@
 
-            <nav id="rightnav" role="navigation" aria-label="Primary">
-                <a href="#" id="menu-icon" name="menu icon" role="navigation"></a>
-                <ul class="">
-                    <li>@Html.ActionLink("Homepage", "Index", "Home", new { area = "" }, new { @class = "active" }) </li>
-                    <li>@Html.ActionLink("About Us", "About", "Home", new { area = "" }, new { @class = "" })</li>
-                    <li>@Html.ActionLink("Contact Us", "Contact", "Home", new { area = "" }, new { @class = "" })</li>
-                    <li>@Html.ActionLink("Programme", "CurrentProgramme", "Programmes", new { area = "" }, new { @class = "" })</li>
-                    <li>@Html.ActionLink("Rules and Policies", "Index", "RulesAndPolicies", new { area = "" }, new { @class = "" })</li>
-                    @*
-                    <li>@Html.ActionLink("Gallery", "Index", "Gallerys", new { area = "" }, new { @class = "" })</li>*@
-                    @*
-                    <li>@Html.ActionLink("Admin", "Index", "Home", new { area = "Admin" }, new { @class = "" })</li>
-                    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
-                    
-                    <li> @Html.Partial("_LoginPartial")</li>
-                </ul>
-            </nav>
+                <nav id="rightnav" role="navigation" aria-label="Primary">
+                    <a href="#" id="menu-icon" name="menu icon" role="navigation"></a>
+                    <ul class="">
+                        <li>@Html.ActionLink("Homepage", "Index", "Home", new { area = "" }, new { @class = "active" }) </li>
+                        <li>@Html.ActionLink("About Us", "About", "Home", new { area = "" }, new { @class = "" })</li>
+                        <li>@Html.ActionLink("Contact Us", "Contact", "Home", new { area = "" }, new { @class = "" })</li>
+                        <li>@Html.ActionLink("Programme", "CurrentProgramme", "Programmes", new { area = "" }, new { @class = "" })</li>
+                        <li>@Html.ActionLink("Rules and Policies", "Index", "RulesAndPolicies", new { area = "" }, new { @class = "" })</li>
+                        @*<li>@Html.ActionLink("Gallery", "Index", "Gallerys", new { area = "" }, new { @class = "" })</li>*@
 
+                        @if (Request.IsAuthenticated)
+                        {
+                            <li>@Html.ActionLink("Members", "Index", "Home", new { area = "Member" }, null)</li>
+
+                        }
+
+                       @*@if (ViewContext.HttpContext.User.IsInRole("Administrator"))
+                       {
+                            <li>@Html.ActionLink("Admin", "Index", "Home", new { area = "Admin" }, new { @class = "" })</li>
+
+
+                        }*@
+
+                    </ul>
+
+
+                </nav>
+            </div>
         </header>
         <div class="row">
             <div class="container">

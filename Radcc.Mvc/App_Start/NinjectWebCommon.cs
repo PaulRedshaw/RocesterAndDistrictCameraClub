@@ -70,6 +70,7 @@ namespace Radcc.Mvc.App_Start
             kernel.Bind<IProgrammeRepository>().To<ProgrammeRepository>();
             kernel.Bind<INewsArticleRepository>().To<NewsArticleRepository>();
             kernel.Bind<IUsefulLinkRepository>().To<UsefulLinkRepository>();
+            kernel.Bind<IGalleryRepository>().To<GalleryRepository>();
         }        
     }
 }

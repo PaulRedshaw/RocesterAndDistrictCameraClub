@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Radcc.Data", "Radcc.Data\Ra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Radcc.UnitTests", "Radcc.UnitTests\Radcc.UnitTests.csproj", "{18D0C70F-210C-4F21-A147-D10E6AB36913}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Radcc.MSTests", "Radcc.MSTests\Radcc.MSTests.csproj", "{78A80F73-9036-4330-8DE4-1CC69C47AB0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{18D0C70F-210C-4F21-A147-D10E6AB36913}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18D0C70F-210C-4F21-A147-D10E6AB36913}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18D0C70F-210C-4F21-A147-D10E6AB36913}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78A80F73-9036-4330-8DE4-1CC69C47AB0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78A80F73-9036-4330-8DE4-1CC69C47AB0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78A80F73-9036-4330-8DE4-1CC69C47AB0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78A80F73-9036-4330-8DE4-1CC69C47AB0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
