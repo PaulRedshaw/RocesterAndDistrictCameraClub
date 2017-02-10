@@ -1,8 +1,8 @@
 ﻿using System.Web.Mvc;
 
-namespace Radcc.Mvc.Admin.Controllers
+namespace Radcc.Mvc.Areas.Admin.Controllers
 {
-    public class MembersController : Controller
+    public class MembersController : AdminController
     {
         // GET: Admin/Members
         public ActionResult Index()

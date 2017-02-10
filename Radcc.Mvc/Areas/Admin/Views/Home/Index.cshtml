@@ -14,7 +14,7 @@
                 </div>
                 <div class="panel-body">
 
-                    @Html.ActionLink("View Events", "Index", "Events")
+                    @Html.ActionLink("View Events", "Index", "Programmes")
                 </div>
             </div>
         </div>
@@ -37,19 +37,19 @@
                     <h4>Useful Links</h4>
                 </div>
                 <div class="panel-body">
-                    @Html.ActionLink("View Useful Links List", "List", "UsefulLinks", routeValues: null, htmlAttributes: new { id = "usefulLinksLink" })
+                    @Html.ActionLink("View Useful Links List", "UsefulLinkList", "UsefulLinks", routeValues: null, htmlAttributes: new { id = "usefulLinksLink" })
 
                 </div>
             </div>
 
         </div>
-        <div id="UsefulLinksAdmin" class="col-md-3">
+        <div id="ImageLinksAdmin" class="col-md-3">
             <div class="panel panel-primary">
                 <div class="panel-heading ">
                     <h4>Homepage Images</h4>
                 </div>
                 <div class="panel-body">
-                    @Html.ActionLink("View Image List", "List", "HomepageImages", routeValues: null, htmlAttributes: new { id = "homepageImagesLink" })
+                    @Html.ActionLink("View Image List", "", "HomepageImages", routeValues: null, htmlAttributes: new { id = "homepageImagesLink" })
 
                 </div>
             </div>

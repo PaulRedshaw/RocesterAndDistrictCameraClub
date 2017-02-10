@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Radcc.Mvc.ViewModels
+namespace Radcc.Mvc.Areas.Admin.ViewModels
 {
     public class RegisterViewModel
     {
-        [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
+
+
+
 
         [Required]
         [StringLength(100, ErrorMessage =

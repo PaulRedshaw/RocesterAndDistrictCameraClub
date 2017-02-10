@@ -2,9 +2,9 @@
 using Radcc.Model;
 using System.Web.Mvc;
 
-namespace Radcc.Mvc.Admin.Controllers
+namespace Radcc.Mvc.Areas.Admin.Controllers
 {
-    public class NewsArticlesController : Controller
+    public class NewsArticlesController : AdminController
     {
         private IUnitOfWork _unitOfWork;
         public NewsArticlesController(IUnitOfWork unitOfWork)

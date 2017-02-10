@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Web.Mvc;
 
-namespace Radcc.Mvc.Admin.Controllers
+namespace Radcc.Mvc.Areas.Admin.Controllers
 {
-    public class RoleController : Controller
+    public class RoleController : AdminController
     {
         private ApplicationDbContext _context;
         public RoleController()

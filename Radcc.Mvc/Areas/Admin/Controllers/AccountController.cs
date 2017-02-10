@@ -3,20 +3,21 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Radcc.Data.Context;
 using Radcc.Model;
+using Radcc.Mvc.Areas.Admin.ViewModels;
 using Radcc.Mvc.ViewModels;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Radcc.Mvc.Admin.Controllers
+namespace Radcc.Mvc.Areas.Admin.Controllers
 {
 
-    public class AccountController : Controller
+    public class AccountController : AdminController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
         public AccountController()
         {
             this._context = new ApplicationDbContext();
@@ -101,48 +102,71 @@ namespace Radcc.Mvc.Admin.Controllers
         public ActionResult Register()
         {
             var model = new RegisterViewModel();
-            // ViewBag.Name = new SelectList(_context.Roles.ToList(),"Name","Name");
+            ViewBag.Name = new SelectList(_context.Roles.ToList(), "Name", "Name");
 
             return View();
         }
 
-        //
+
         // POST: /Account/Register
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser
-                {
-                    UserName = model.FirstName + " " + model.LastName,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    Email = model.Email
-                };
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
 
+                //user.UserName = model.FirstName + " " + model.LastName;
+                //user.FirstName = model.FirstName;
+                //user.LastName = model.LastName;
+                //user.Email = model.Email;
+                //user.PasswordHash = model.Password;
+                //user.ConfirmedEmail = false;
+
+                var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    //  Comment the following line to prevent log in until the user is confirmed.
+                    //  await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    //Assign Role to user Here     
-                    //await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);   
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code },
+                        protocol: Request.Url.Scheme);
+                    await
+                        UserManager.SendEmailAsync(user.Id, "Confirm your account",
+                            "You have been registered as a member of Rocester and District Camera Club Website. Please confirm your account by clicking <a href=\"" +
+                            callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home", new { area = "Member" });
+                    //System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage(
+                    //                        new System.Net.Mail.MailAddress("admin@rocesteranddistrictcamera.club", "Member Registration"),
+                    //                        new System.Net.Mail.MailAddress(user.Email));
+                    //m.Subject = "Email confirmation";
+                    //m.Body = string.Format("Dear {0}<BR/>You have now been registered as a member of Rocester and District Camera Club website, please click on the below link to comlete your registration: <a href=\"{1}\" title=\"User Email Confirm\">{1}</a>", user.UserName, Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = user.Email }, Request.Url.Scheme));
+                    //m.IsBodyHtml = true;
+                    //System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient("mail.rocesteranddistrictcamera.club");
+                    //smtp.Credentials = new System.Net.NetworkCredential("admin@rocesteranddistrictcamera.club", "Rdcc1234!");
+                    //smtp.EnableSsl = false;
+                    //smtp.Port = 110;
+                    //smtp.Host = "Pop";
+                    //smtp.Send(m);
+
+                    TempData["ViewBagLink"] = callbackUrl;
+                    ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
+                     + "before you can log in.";
+
+
+                    // return RedirectToAction("Confirm", "Account", new { UserId = user.Email });
                 }
-
                 AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form
             return View(model);
+
+
+
         }
 
         //
@@ -287,7 +311,7 @@ namespace Radcc.Mvc.Admin.Controllers
             {
                 return View("Error");
             }
-            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, returnUrl = model.ReturnUrl, rememberMe = model.RememberMe });
         }
 
         //

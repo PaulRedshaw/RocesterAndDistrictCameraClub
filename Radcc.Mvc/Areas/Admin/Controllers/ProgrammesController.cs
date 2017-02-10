@@ -2,9 +2,9 @@
 using Radcc.Model;
 using System.Web.Mvc;
 
-namespace Radcc.Mvc.Admin.Controllers
+namespace Radcc.Mvc.Areas.Admin.Controllers
 {
-    public class ProgrammesController : Controller
+    public class ProgrammesController : AdminController
     {
 
         private readonly IUnitOfWork _unitOfWork;

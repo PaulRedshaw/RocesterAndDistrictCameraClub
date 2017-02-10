@@ -263,8 +263,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Admin\Controllers\IGalleryRepository.cs" />
     <Compile Include="Areas\Admin\Controllers\ImageDisplayController.cs" />
     <Compile Include="Areas\Admin\Controllers\MembersController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsArticlesController.cs" />
@@ -296,7 +296,8 @@
     </Compile>
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="CustomClasses\ProgrammeFilterDates.cs" />
-    <Compile Include="Models\ApplicationRoleManager.cs" />
+    <Compile Include="Areas\Admin\Models\ApplicationRoleManager.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -321,7 +322,7 @@
     <Compile Include="ViewModels\UIViewModels\ProgrammeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\AccountViewModels\RegisterViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModels\VerfifyCodeViewModel.cs" />
@@ -451,7 +452,6 @@
     <Content Include="Areas\Admin\Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Areas\Admin\Views\Account\ForgotPassword.cshtml" />
     <Content Include="Areas\Admin\Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Register.cshtml" />
     <Content Include="Areas\Admin\Views\Account\ResetPassword.cshtml" />
     <Content Include="Areas\Admin\Views\Account\ResetPasswordConfirmation.cshtml" />
@@ -630,12 +630,13 @@
     <Content Include="Views\Home\_Carousel.cshtml" />
     <Content Include="Views\UsefulLinks\_UsefulLinks.cshtml" />
     <Content Include="Views\Shared\_NavigationBar.cshtml" />
-    <Content Include="Views\Programmes\List.cshtml" />
     <Content Include="Views\Gallerys\Index.cshtml" />
     <Content Include="Views\Shared\_ImageSlider.cshtml" />
     <Content Include="Views\Programmes\_NextMeeting.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Account\Confirm.cshtml" />
+    <Content Include="Views\Shared\Info.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

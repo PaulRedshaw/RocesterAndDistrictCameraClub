@@ -22,14 +22,15 @@ namespace Radcc.Mvc.Controllers
         public ActionResult CurrentProgramme()
         {
             var programmeDateFilter = new ProgrammeFilterDates();
-            //var startDate = programmeDateFilter.GetStartDate(DateTime.Now);
-            //var endDate = programmeDateFilter.GetStartDate(DateTime.Now);
-            var programme = _unitOfWork.Programmes.CurrentYearsProgramme(GetStartDate(), GetEndDate());
+
+            var startDate = GetStartDate();
+            var endDate = GetEndDate();
+            var programme = _unitOfWork.Programmes.CurrentYearsProgramme(startDate, endDate);
 
             if (programme != null)
             {
                 //TODO: HeadingTitle = Programme StartOfSeasonYear - EndOfSeasonYear Season.
-                // ViewBag.Title = "Programme " + startYear + " - " + endYear + " Season";
+                ViewBag.Title = "Programme " + startDate.Year + " - " + endDate.Year + " Season";
             }
             else
             {

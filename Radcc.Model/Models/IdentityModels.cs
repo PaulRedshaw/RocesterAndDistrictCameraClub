@@ -20,7 +20,7 @@ namespace Radcc.Model
         [Required]
         public string EmailAddress { get; set; }
 
-
+        public bool ConfirmedEmail { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -29,7 +29,10 @@ namespace Radcc.Model
             // Add custom user claims here
             return userIdentity;
         }
+
+
+
     }
 
-   
+
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Radcc.Model;
 
 namespace Radcc.MSTests
@@ -8,9 +7,9 @@ namespace Radcc.MSTests
     public class Member_Tests
     {
         [TestMethod]
-        public void ThatFirstNameisAddedToANewInstanceOfMember ()
+        public void ThatFirstNameisAddedToANewInstanceOfMember()
         {
-            var member = new ApplicationUser {  FirstName = "Paul", LastName = "Redshaw", EmailAddress="paul.rigly@gmail.com"};
+            var member = new ApplicationUser { FirstName = "Paul", LastName = "Redshaw", EmailAddress = "paul.rigly@gmail.com" };
 
             Assert.AreEqual("Paul", member.FirstName);
         }

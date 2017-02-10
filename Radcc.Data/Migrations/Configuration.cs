@@ -3,9 +3,7 @@ namespace Radcc.Data.Migrations
     using Context;
     using Model;
     using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Radcc.Data.Context.ApplicationDbContext>
     {
@@ -48,18 +46,21 @@ namespace Radcc.Data.Migrations
                new Programme { Id = 28, Title = "Creative Photography", EventDate = new DateTime(2017, 1, 17, 20, 00, 0), Description = "A talk by Tony Winfield", Comment = "" },
                new Programme { Id = 29, Title = "Demo and Practical", EventDate = new DateTime(2017, 2, 7, 20, 00, 0), Description = "Layers in Photoshop by John Heppell", Comment = "" },
                new Programme { Id = 30, Title = "Competition", EventDate = new DateTime(2017, 2, 21, 20, 00, 0), Description = "Subject-Theme: Open Competiton and must have been taken in 2016", Comment = "Judge: TBA" },
-               new Programme { Id = 31, Title = "Members Evening", EventDate = new DateTime(2017, 3, 7, 20, 00, 0), Description = "A general evening on all aspects of photography", Comment = "" },
-               new Programme { Id = 32, Title = "Interclub Competition with Ashbourne or Cheadle", EventDate = new DateTime(2016, 3, 21, 20, 00, 0), Description = "TBA", Comment = "" },
+               new Programme { Id = 31, Title = "Black and White Photography", EventDate = new DateTime(2017, 3, 7, 20, 00, 0), Description = "with Clive Rowley", Comment = "" },
+               new Programme { Id = 32, Title = "Irene Froy DVD Presentation", EventDate = new DateTime(2016, 3, 21, 20, 00, 0), Description = "A Paaaion for Pastels", Comment = "" },
                new Programme { Id = 33, Title = "Competition", EventDate = new DateTime(2017, 4, 4, 20, 00, 0), Description = "Subject-Theme: Altered Reality", Comment = "Judge: Tony Winfield" },
-               new Programme { Id = 34, Title = "TBA", EventDate = new DateTime(2017, 4, 18, 20, 00, 0), Description = "TBA", Comment = "" },
-               new Programme { Id = 35, Title = "Outdoor Practical Evening", EventDate = new DateTime(2017, 5, 16, 20, 00, 0), Description = "Nature Photography at Wolseley Nature Reserve - Paddy Ruske", Comment = "" },
-               new Programme { Id = 36, Title = "Annual General Meeting", EventDate = new DateTime(2017, 5, 20, 20, 00, 0), Description = "Nominations for committee member elections to be submitted by the previous meeting", Comment = "" }
+               new Programme { Id = 34, Title = "Creating A/V's in Photoshop", EventDate = new DateTime(2017, 4, 18, 20, 00, 0), Description = "Presentation and Demonstration by Paul Redshaw ", Comment = "" },
+               new Programme { Id = 35, Title = "Outdoor Practical Evening", EventDate = new DateTime(2017, 5, 2, 20, 00, 0), Description = "A walk around JCB lake with an emphasis on Macro photography ", Comment = "Meet at Rocester Village Hall" },
+               new Programme { Id = 36, Title = "Outdoor Practical Evening", EventDate = new DateTime(2017, 5, 16, 20, 00, 0), Description = "Nature Photography at Wolseley Nature Reserve - Stuart Boyd", Comment = "" },
+               new Programme { Id = 37, Title = "Annual general Meeting", EventDate = new DateTime(2017, 5, 23, 20, 00, 0), Description = "Nominations for committee member elections to be submitted by the previous meeting", Comment = "" },
+               new Programme { Id = 38, Title = "Show and Tell", EventDate = new DateTime(2017, 9, 5, 20, 00, 0), Description = "Photographs taken over the summer", Comment = "" }
                );
             context.SaveChanges();
             context.UsefulLinks.AddOrUpdate(e => e.Id,
                 new UsefulLink { Id = 1, Name = "Midland Counties Photographic Federation", URL = "http://www.mcpf.co.uk/", Description = "MCPF" },
                 new UsefulLink { Id = 2, Name = "Photographic Alliance of Great Britain", URL = "http://www.thepagb.org.uk/", Description = "PAGB" },
-                new UsefulLink { Id = 3, Name = "Royal Photographic Society", URL = "http://www.rps.org/", Description = "RPS" }
+                new UsefulLink { Id = 3, Name = "Royal Photographic Society", URL = "http://www.rps.org/", Description = "RPS" },
+                new UsefulLink { Id = 4, Name = "Adobe TV", URL = "http://tv.adobe.com/", Description = "Online Tutorials for Photoshop and LIghtroom" }
                 );
             context.SaveChanges();
             context.NewsArticles.AddOrUpdate(e => e.Id,
@@ -67,8 +68,8 @@ namespace Radcc.Data.Migrations
                {
                    Id = 1,
                    ArticleHeading = "New Website is now live",
-                   article = "The new ebsite is now up and running. although only the basic information is available to the same level as the previous website, However new areas for members and photo galleries will be available soon",
-                   DatePosted = new DateTime(2016, 10, 05)
+                   article = "The new website is now up and running. although only the basic information is available to the same level as the previous website, However new areas for members and photo galleries will be available soon",
+                   DatePosted = new DateTime(2017, 02, 10)
                }
 
                );

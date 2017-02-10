@@ -6,9 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="identifier-url" content="http://www.rocesteranddistrictcamera.club" />
         <meta name="title" content="Rocester and District Camera Club" />
-        <meta name="description" content="The club meets the first  and third Tuesday of every month between August and May inclusive" />
+        <meta name="description" content="Rocester and District Camera Club Website" />
+        <meta name="meeting" content="The club meets the first and third Tuesday of every month between August and May inclusive" />
         <meta name="abstract" content="The club meets the first  and third Tuesday of every month between August and May inclusive" />
-        <meta name="keywords" content="Rocester, Camera, Club, Photography,Uttoxeter, Village, Village Hall, Community Centre, Community, Landscape, Portrait, Nature, Astronomy," />
+        <meta name="keywords" content="Rocester, Camera, Club, Photography, Uttoxeter, Village, Rocester Village Hall, Community Centre, Community, Landscape, Portrait, Nature, Astronomy, Romans, JCB" />
         <meta name="author" content="Paul Redshaw" />
         <meta name="revisit-after" content="7" />
         <meta name="language" content="EN" />
@@ -56,12 +57,12 @@
 
                         }
 
-                       @*@if (ViewContext.HttpContext.User.IsInRole("Administrator"))
+                       @if (ViewContext.HttpContext.User.IsInRole("Admin"))
                        {
                             <li>@Html.ActionLink("Admin", "Index", "Home", new { area = "Admin" }, new { @class = "" })</li>
 
 
-                        }*@
+                        }
 
                     </ul>
 

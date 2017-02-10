@@ -1,8 +1,8 @@
 ﻿using System.Web.Mvc;
 
-namespace Radcc.Mvc.Admin.Controllers
+namespace Radcc.Mvc.Areas.Admin.Controllers
 {
-    public class ImageDisplayController : Controller
+    public class ImageDisplayController : AdminController
     {
         // GET: Admin/ImageDisplay
         public ActionResult Index()

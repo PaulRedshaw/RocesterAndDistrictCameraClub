@@ -62,6 +62,11 @@
   <ItemGroup>
     <Compile Include="Context\ApplicationDbContext.cs" />
     <Compile Include="Infrastructure\Classes\Disposable.cs" />
+    <Compile Include="Migrations\201612111822400_AddEmailConfirmation.cs" />
+    <Compile Include="Migrations\201612111822400_AddEmailConfirmation.Designer.cs">
+      <DependentUpon>201612111822400_AddEmailConfirmation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612121832003_RemoveUserName.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Infrastructure\Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
@@ -90,12 +95,20 @@
     <Folder Include="Configuration\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201609270847557_Start.resx">
       <DependentUpon>201609270847557_Start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612111822400_AddEmailConfirmation.resx">
+      <DependentUpon>201612111822400_AddEmailConfirmation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612121832003_RemoveUserName.resx">
+      <DependentUpon>201612121832003_RemoveUserName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
