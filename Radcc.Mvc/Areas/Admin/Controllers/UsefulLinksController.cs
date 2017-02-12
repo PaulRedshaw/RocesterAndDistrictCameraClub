@@ -17,7 +17,7 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         public ActionResult List()
         {
             IEnumerable<UsefulLink> usefulLinks = _unitOfWork.UsefulLinks.GetAllLinks();
-
+            ViewBag.Title = "Useful Links Admin";
             return View(usefulLinks);
         }
 

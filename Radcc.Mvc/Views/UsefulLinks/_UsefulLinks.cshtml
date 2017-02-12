@@ -7,11 +7,12 @@
     <div class="panel-heading">
         <h4>Useful Links</h4>
     </div>
-    <div class="">
+    <div>
         <ul class="nav nav-tabs nav-stacked">
             @foreach (var link in Model)
             {
-                <li>                 
+                <li>
+
                     <a title="@link.Description" href="@link.URL" >@link.Name</a>
                 </li>
             }

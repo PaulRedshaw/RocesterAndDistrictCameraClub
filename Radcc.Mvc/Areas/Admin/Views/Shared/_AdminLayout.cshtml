@@ -22,22 +22,14 @@
 </head>
 <body>
     <header>
-        <img id="logo" src="~/Images/SiteImages/Logo/RadccLogoBlackShade.svg" alt="Rocester and District Camera Club" title="Rocester and District Camera Club"/>
-         @ViewBag.Title
-        @*<div id="login" class="float-right">
-                @Html.Partial("_LoginPartial")
-            </div>*@
+        <span><img id="logo" src="~/Images/SiteImages/Logo/RadccLogoBlackShade.svg" alt="Rocester and District Camera Club" title="Rocester and District Camera Club" /></span>
+        <span>@ViewBag.Title</span>
+
         <nav>
        
             <ul class="">
                 <li>@Html.ActionLink("Homepage", "Index", "Home", new { area = "" }, new { @class = "current" }) </li>
-                @*<li>@Html.ActionLink("About Us", "About", "Home", new { area = "" }, new { @class = "" })</li>
-                <li>@Html.ActionLink("Contact Us", "Contact", "Home", new { area = "" }, new { @class = "" })</li>
-                <li>@Html.ActionLink("Events", "Index", "Programme", new { area = "" }, new { @class = "" })</li>
-                <li>@Html.ActionLink("Rules and Policies", "Index", "Rules", new { area = "" }, new { @class = "" })</li>
-                <li>@Html.ActionLink("Galleries", "Index", "Galleries", new { area = "" }, new { @class = "" })</li>
-                <li>@Html.ActionLink("Admin", "Index", "Home", new { area = "Admin" }, new { @class = "" })</li>
-                <li>@Html.ActionLink("Member", "Index", "Home", new { area = "Member" }, new { @class = "" })</li>*@
+
             </ul>
         </nav>
 

@@ -37,7 +37,6 @@
         padding-top: 120px;
         padding-bottom: 50px;
         background-color: cornsilk;
-        /*background: url('../Images/Wallpaper/Backdrop1.jpg')  no-repeat center center fixed;*/
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -53,8 +52,6 @@
             width: 100%;
             height: 100%;
             opacity: 0.3;
-            /*background-image:
-        url('../Images/Wallpaper/Backdrop1.jpg');*/
             background-repeat: no-repeat;
             -ms-background-size: cover;
             -o-background-size: cover;
@@ -149,7 +146,7 @@ padding:10px 0px 5px 0px;
         background: url('~/Images/icon.png') center;
     }
 
-    a:hover#menu-icon {
+    a:hover #menu-icon {
         border-radius: 4px 4px 0 0;
     }
 
@@ -171,16 +168,6 @@ padding:10px 0px 5px 0px;
     #doc {
     }
 
-    /*#content 
-{
-width:100%;
-
-}*/
-
-    /*.blueberry 
-{
-    max-width: 420px;
-}*/
 
     aside {
         position: absolute;
@@ -266,7 +253,7 @@ width:100%;
 
     /*---------------------MEDIA----------------------------*/
 
-    @media screen and (max-width:478px) {
+    /*@media screen and (max-width:478px) {
 
         body {
         }
@@ -303,7 +290,7 @@ width:100%;
         nav:hover ul {
             display: block;
         }
-    }
+    }*/
     /*-------------Effects-----------------------*/
 
     .panel {
@@ -426,4 +413,5 @@ slider-Image {
 
 }
 @media print {
+    
 }
