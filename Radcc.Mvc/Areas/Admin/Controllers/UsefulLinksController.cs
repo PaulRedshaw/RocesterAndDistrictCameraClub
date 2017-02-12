@@ -14,7 +14,7 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         }
 
         // GET: Admin/UsefulLinks
-        public ActionResult UsefulLinkList()
+        public ActionResult List()
         {
             IEnumerable<UsefulLink> usefulLinks = _unitOfWork.UsefulLinks.GetAllLinks();
 
@@ -30,7 +30,8 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         // GET: Admin/UsefulLinks/Create
         public ActionResult Create()
         {
-            return View();
+            var link = new UsefulLink();
+            return View(link);
         }
 
         // POST: Admin/UsefulLinks/Create

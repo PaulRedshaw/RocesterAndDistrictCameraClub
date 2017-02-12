@@ -40,7 +40,7 @@ namespace Radcc.Mvc.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Date,Title,Description,Comment")] Programme programme)
+        public ActionResult Create([Bind(Include = "Date,Title,Description,Comment")] Programme programme)
         {
             if (ModelState.IsValid)
             {

@@ -275,8 +275,8 @@
     <Compile Include="Areas\Member\Controllers\HomeController.cs" />
     <Compile Include="Areas\Member\MemberAreaRegistration.cs" />
     <Compile Include="AuthenticationIdentityManager.cs" />
-    <Compile Include="Classes\CustomAuthorizeAttribute.cs" />
-    <Compile Include="Classes\CustomDateProvider.cs" />
+    <Compile Include="bin\Classes\CustomAuthorizeAttribute.cs" />
+    <Compile Include="bin\Classes\CustomDateProvider.cs" />
     <Compile Include="Controllers\RulesAndPoliciesController.cs" />
     <Compile Include="Controllers\AccountController.cs">
       <SubType>Code</SubType>
@@ -400,6 +400,7 @@
     <Content Include="Images\accent.png" />
     <Content Include="Images\asset.f.logo.lg.png" />
     <Content Include="Images\SiteImages\The Undercroft, Fountans Abbey by Clive Rowley.jpg" />
+    <Content Include="Images\SiteImages\TOWER BRIDGE by Paul Redshaw.jpg" />
     <Content Include="Images\Wallpaper\Backdrop1.jpg" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\FB-FindUsonFacebook-online-1024.png" />
@@ -458,11 +459,11 @@
     <Content Include="Areas\Admin\Views\Account\SendCode.cshtml" />
     <Content Include="Areas\Admin\Views\Account\VerifyCode.cshtml" />
     <Content Include="Areas\Admin\Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Areas\Admin\Views\Events\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Events\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Events\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Events\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Events\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Programmes\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Programmes\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Programmes\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Programmes\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Programmes\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Members\Index.cshtml" />
     <Content Include="Areas\Admin\Views\NewsArticles\Create.cshtml" />

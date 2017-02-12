@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Radcc.Entities.Event>
+﻿@model IEnumerable<Radcc.Model.Programme>
 
 @{
     ViewBag.Title = "Index";
@@ -8,7 +8,7 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.EventType.Type)
+                @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.EventDate)
@@ -20,7 +20,7 @@
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AdditionalComment)<span class="float-right">@Html.ActionLink("Create New", "Create", "Events", new { @class = "btn btn-warning btn-xs" })</span>
+                @Html.DisplayNameFor(model => model.Comment)<span class="float-right">@Html.ActionLink("Create New", "Create", "Programmes", new { @class = "btn btn-warning btn-xs" })</span>
             </th>
         
         </tr>
@@ -29,7 +29,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.EventType.Type)
+                    @Html.DisplayFor(modelItem => item.Id)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.EventDate)
@@ -41,7 +41,7 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.AdditionalComment)
+                    @Html.DisplayFor(modelItem => item.Comment)
                 </td>
          
             </tr>

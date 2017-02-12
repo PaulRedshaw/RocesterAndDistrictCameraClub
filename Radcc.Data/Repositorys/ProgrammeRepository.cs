@@ -29,7 +29,7 @@ namespace Radcc.Data
         }
         public IEnumerable<Programme> GetAllProgrammeEvents()
         {
-            return _context.Programmes.ToList();
+            return _context.Programmes.OrderBy(d => d.EventDate).ToList();
         }
         public Programme GetProgrammeById(int id)
         {
@@ -43,7 +43,7 @@ namespace Radcc.Data
 
         public void Update(Programme entity)
         {
-            throw new NotImplementedException();
+            this._context.Entry(entity);
         }
 
         public void Delete(Programme entity)

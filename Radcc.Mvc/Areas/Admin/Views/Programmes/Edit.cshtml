@@ -1,31 +1,30 @@
-﻿@model Radcc.Entities.Event
+﻿@model Radcc.Model.Programme
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Create new event</h2>
- 
-@using (Html.BeginForm()) 
+<h2>Edit Programme Item</h2>
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-     
-        <hr />
-        <div class="form-group">
-            @Html.LabelFor(model => model.EventType, htmlAttributes: new { @class = "control-label col-md-2", id="eventTypeSelector"})
+ 
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.EventTypeId, "EventTypeId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.EventTypeId, new SelectList(ViewBag.EventTypeId, "Value", "Text"), "Select a meeting type", new { @class = "form-control" })
+                @Html.DropDownList("EventTypeId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.EventTypeId, "", new { @class = "text-danger" })
             </div>
-        </div>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        </div>*@
         <div class="form-group">
             @Html.LabelFor(model => model.EventDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EventDate, new { htmlAttributes = new { @class = "form-control datepicker" } })
-
                 @Html.ValidationMessageFor(model => model.EventDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -45,35 +44,24 @@
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.AdditionalComment, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AdditionalComment, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AdditionalComment, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
             </div>
         </div>
 
-       
+        
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", "Programmes")
 </div>
-<script>
-    $(function () {
-       
-        $('#eventTypeSelector').selectize({
-            create: true,
-            sortField: 'text'
-        });
-    });
-
-</script>

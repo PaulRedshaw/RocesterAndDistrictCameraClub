@@ -1,4 +1,4 @@
-﻿@model List<Radcc.Model.UsefulLink>
+﻿@model IEnumerable<Radcc.Model.UsefulLink>
 @{
    Layout = null;
 }
@@ -11,9 +11,11 @@
         <ul class="nav nav-tabs nav-stacked">
             @foreach (var link in Model)
             {
-                <li><a title="@link.Description" href="@link.URL" >@link.Name</a></li>
+                <li>                 
+                    <a title="@link.Description" href="@link.URL" >@link.Name</a>
+                </li>
             }
-        </ul>
+        </ul>  
 
     </div>
 

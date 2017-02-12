@@ -1,4 +1,4 @@
-﻿@model Radcc.Entities.Event
+﻿@model Radcc.Model.Programme
 
 @{
     ViewBag.Title = "Details";
@@ -10,13 +10,7 @@
     <h4>Event</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.EventType.Type)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EventType.Type)
-        </dd>
+       
 
         <dt>
             @Html.DisplayNameFor(model => model.EventDate)
@@ -42,11 +36,11 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.AdditionalComment)
+            @Html.DisplayNameFor(model => model.Comment)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AdditionalComment)
+            @Html.DisplayFor(model => model.Comment)
         </dd>
 
     </dl>
